@@ -10,8 +10,8 @@ module.exports = class Jpg {
   toPublicJSON() {
     return {
       id: this.id,
-      size: this.size ,
-      updatedAt: this.updatedAt,
+      // size: this.size ,
+      // updatedAt: this.updatedAt,
     };
   }
 };
