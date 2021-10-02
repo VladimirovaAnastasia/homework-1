@@ -2,6 +2,7 @@ node_modules
 
 db/**/*
 !db/.gitkeep
+!db/dump.json
 !db/jpg
 
 db/jpg/*
