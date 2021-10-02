@@ -18,7 +18,7 @@ module.exports = async (req, res, next) => {
     jpgFile.size = req.file.size;
     await db.insertJpg(jpgFile);
 
-    await res.json({id: jpgId});
+    return res.json({id: jpgId});
   } catch (err) {
     next(err)
   }
