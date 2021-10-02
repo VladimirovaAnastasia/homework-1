@@ -56,7 +56,7 @@ class Database extends EventEmitter {
       return null;
     }
 
-    return new Jpg(jpgRaw.id, jpgRaw.updatedAt, jpgRaw.size, jpg.mimeType);
+    return new Jpg(jpgRaw.id, jpgRaw.updatedAt, jpgRaw.size, jpgRaw.mimeType);
   }
 
   find() {
