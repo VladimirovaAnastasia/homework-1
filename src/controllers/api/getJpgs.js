@@ -1,7 +1,7 @@
 const db = require('../../entities/Database');
 
 module.exports = (req, res) => {
-  const allSvgs = db.find().map((svg) => svg.toPublicJSON());
+  const allJpgs = db.find().map((jpg) => jpg.toPublicJSON());
 
-  return res.json(allSvgs);
+  return res.json(allJpgs);
 };
