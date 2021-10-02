@@ -1,3 +1,3 @@
 module.exports = {
-    createFileName: (name, ext = '.jpg') => name + ext,
+    createFileName: (name, ext = '.jpeg') => name + ext,
 };
