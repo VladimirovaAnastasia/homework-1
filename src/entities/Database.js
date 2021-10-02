@@ -25,7 +25,7 @@ class Database extends EventEmitter {
       for (let id in dump.idToJpg) {
         const jpg = dump.idToJpg[id];
 
-        this.idToJpg[id] = new Jpg(jpg.id, jpg.updatedAt, jpg.size);
+        this.idToJpg[id] = new Jpg(jpg.id, jpg.updatedAt, jpg.size, jpg.mimeType);
       }
     }
   }
@@ -56,7 +56,7 @@ class Database extends EventEmitter {
       return null;
     }
 
-    return new Jpg(jpgRaw.id, jpgRaw.updatedAt, jpgRaw.size);
+    return new Jpg(jpgRaw.id, jpgRaw.updatedAt, jpgRaw.size, jpg.mimeType);
   }
 
   find() {

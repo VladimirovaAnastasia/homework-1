@@ -16,9 +16,10 @@ module.exports = async (req, res, next) => {
       throw new BadRequestApiError('Please upload a file!');
     }
     jpgFile.size = req.file.size;
+    jpgFile.mimeType = req.file.mimetype;
     await db.insertJpg(jpgFile);
 
-    return res.json({id: jpgId});
+    return res.json(jpgFile.toPublicJSON());
   } catch (err) {
     next(err)
   }
