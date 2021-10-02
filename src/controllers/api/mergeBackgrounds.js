@@ -25,15 +25,16 @@ module.exports = async (req, res, next) => {
             path.resolve(jpgFolder, createFileName(back))
         );
 
-        const colorsMas = color.split(',').map((color) => Number(color))
+        const colorsMas = color.split(',').map((color) => Number(color));
+        const resultLink = path.resolve(jpgFolder, createFileName('result'));
 
         replaceBackground(frontStream, backStream, colorsMas, Number(threshold)).then(
             (readableStream) => {
-                const writableStream = fs.createWriteStream(
-                  path.resolve(jpgFolder, createFileName('result'))
-                );
-
-                readableStream.pipe(res);
+                const writableStream = fs.createWriteStream(resultLink);
+                readableStream.pipe(writableStream);
+                readableStream.on('end',()=>{
+                    res.sendFile(resultLink);
+                })
             }
         );
     } catch (err) {
