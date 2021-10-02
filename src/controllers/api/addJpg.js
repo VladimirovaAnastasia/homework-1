@@ -8,8 +8,9 @@ const {BadRequestApiError} = require("../../validators/errors/ApiError");
 module.exports = async (req, res, next) => {
   try {
     const jpgFile = new Jpg();
+    const jpgId = jpgFile.id;
 
-    await uploadJpg(jpgFile.id, req, res);
+    await uploadJpg(jpgId, req, res);
 
     if (req.file === undefined) {
       throw new BadRequestApiError('Please upload a file!');
@@ -17,7 +18,7 @@ module.exports = async (req, res, next) => {
     jpgFile.size = req.file.size;
     await db.insertJpg(jpgFile);
 
-    await res.json(jpgFile.toPublicJSON());
+    await res.json({id: jpgId});
   } catch (err) {
     next(err)
   }
